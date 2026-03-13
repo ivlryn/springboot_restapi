@@ -3,13 +3,12 @@ package com.example.jwttest.controller;
 import com.example.jwttest.dto.AuthRequest;
 import com.example.jwttest.dto.AuthResponse;
 import com.example.jwttest.dto.SignupRequest;
+import com.example.jwttest.model.UserModel;
 import com.example.jwttest.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -24,6 +23,10 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
         return ResponseEntity.ok(authService.login(request));
+    }
+    @GetMapping("/me")
+    public ResponseEntity<UserModel> getCurrentUser(@AuthenticationPrincipal UserModel user) {
+        return ResponseEntity.ok(user);
     }
 
 }
