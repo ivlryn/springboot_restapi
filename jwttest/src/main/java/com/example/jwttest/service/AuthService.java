@@ -24,6 +24,7 @@ public class AuthService {
         }
 
         UserModel user = new UserModel();
+        user.setFirstName(request.firstName());
         user.setLastName(request.lastName());
         user.setEmail(request.email());
 
