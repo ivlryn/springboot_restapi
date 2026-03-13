@@ -1,0 +1,10 @@
+.idea/
+*.iml
+jwttest/target/
+jwttest/.mvn/
+jwttest/mvnw
+jwttest/mvnw.cmd
+
+# Environment / secrets
+*.env
+application-local.properties
